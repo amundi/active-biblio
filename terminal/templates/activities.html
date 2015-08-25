@@ -1,0 +1,23 @@
+<ion-view view-title="{{'Activities' | translate}}">
+    <br/><br/><br/><br/>
+    <input type="text" placeholder="ISBN10/ISBN13" ng-model="isbn"/>
+    <button class="button" ng-click="searchBook()">{{'Search' | translate}}</button>
+
+    <div ng-if="book">
+        <img ng-src="{{ book.photo }}" height="130" width="90"/>
+        <input type="text" placeholder="ISBN10" ng-model="book.isbn10"/>
+        <input type="text" placeholder="ISBN10" ng-model="book.isbn13"/>
+        <input type="text" placeholder="{{'Title' | translate}}" ng-model="book.title"/>
+        <input type="text" placeholder="{{'Publisher' | translate}}" ng-model="book.publisher"/>
+        <input type="text" placeholder="{{'Published date' | translate}}" ng-model="book.published_date"/>
+        <input type="text" placeholder="{{'Language' | translate}}" ng-model="book.language"/>
+        <input type="text" placeholder="{{'Description' | translate}}" ng-model="book.description"/>
+        <input type="text" placeholder="{{'Pages' | translate}}" ng-model="book.pages"/>
+        <input type="text" placeholder="{{'Authors' | translate}}" ng-model="book.author"/>
+        <input type="text" placeholder="{{'Categories' | translate}}" ng-model="book.category"/>
+
+        <button class="button" ng-click="addHardcopy()">{{'Add' | translate}}</button>
+        <button class="button" ng-click="rent()">{{'Rent' | translate}}</button>
+        <button class="button" ng-click="return()">{{'Return' | translate}}</button>
+    </div>
+</ion-view>

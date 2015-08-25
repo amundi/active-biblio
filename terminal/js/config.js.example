@@ -1,0 +1,7 @@
+'use strict';
+
+angular.module('starter.config', [])
+    .constant('config', {
+        server_url: 'http://localhost:8080',
+        googleAPI: 'https://www.googleapis.com/books/v1/volumes?q=isbn:'
+    });

@@ -1,0 +1,21 @@
+{
+  "name": "ActiveBiblio",
+  "version": "0.0.0",
+  "description": "",
+  "main": "service.js",
+  "dependencies":{
+    "express": "~4.12.4",
+    "mysql": "~2.8.0",
+    "body-parser": "~1.12.4",
+    "nodemailer": "~0.7.1",
+    "jsonwebtoken": "~5.0.4",
+    "sequelize": "~3.5.1",
+    "should": "~7.0.4",
+    "soap": "~0.9.1",
+    "sqlite3": "~3.0.10",
+    "supertest": "~1.0.1",
+    "underscore": "~1.8.3",
+    "mocha": "~2.2.5",
+    "cors": "~2.7.1"
+  }
+}

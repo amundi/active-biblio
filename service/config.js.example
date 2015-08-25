@@ -1,0 +1,72 @@
+// Authentication plugin; possible values: webservice, file
+exports.auth = {
+    method: 'webservice',
+    params: {
+      wsdl_file: 'local/company-auth.wsdl',
+      extra_args: ['domain', 'department', ...]
+    }
+};
+
+exports.auth = {
+    method: 'file',
+    params: {
+      file: 'local/passwords.txt'
+    }
+};
+
+// Database storage
+exports.config = {
+    database: "activebiblio",
+    username: "",
+    password: "",
+    connect : {
+        host: 'localhost',
+        dialect: 'sqlite',
+        storage: 'local/sqlite.db',
+
+        pool: {
+            max: 5,
+            min: 0,
+            idle: 10000
+        }
+    }
+};
+
+// Admin accounts
+exports.admin_file = "";
+
+// Mailing system
+exports.mailing = {
+    user: "local@gmail.com",
+    password: ""
+};
+
+// Access control
+exports.access_control = '*';
+
+// Config test
+exports.configTest = {
+    database: "activebiblio",
+    username: "",
+    password: "",
+    connect : {
+        dialect: 'sqlite',
+        storage: 'local/tests-activebiblio.db',
+
+        pool: {
+            max: 5,
+            min: 0,
+            idle: 10000
+        }
+    }
+};
+
+// Rental configuration
+// Possible values: true if limited, false if unlimited
+exports.rental_days_limit = false;
+
+exports.rental_delay = 7;
+exports.delay_to_return_book = 7;
+
+// Reservation configuration
+exports.delay_to_pick_book_reserved = 7;

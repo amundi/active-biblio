@@ -1,0 +1,23 @@
+<ion-view view-title="{{'Log in' | translate}}">
+    <h2>{{'Welcome' | translate}}</h2>
+
+    <div ng-if="!logged">
+        <h3>{{'Please log in' | translate}}</h3>
+
+        <div class="input">
+            <input type="text" placeholder="{{'Username' | translate}}" required ng-model="mail">
+        </div>
+
+        <div class="input">
+            <input type="password" placeholder="{{'Password' | translate}}" required ng-model="password"/>
+        </div>
+
+        <button type="submit" class="btn btn-primary" ng-click="login(mail, password)">{{'Log in' | translate}}</button>
+    </div>
+
+    <div ng-if="logged">
+        <h3>{{'You are logged' | translate}}</h3>
+
+        <button type="submit" class="btn btn-primary" ng-click="logout()">{{'Log out' | translate}}</button>
+    </div>
+</ion-view>

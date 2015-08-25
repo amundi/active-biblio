@@ -1,0 +1,18 @@
+<ion-view view-title="{{'Settings' | translate}}">
+    <ion-content>
+        <label>{{'Location' | translate}}:
+            <select ng-model="locations.updatedLocation"
+                    ng-options="location.building + ':' + location.floor + ':' + location.room for location in locations">
+            </select>
+        </label>
+        <button type="button" class="btn btn-primary" ng-click="changeLoc()">{{'Change location' | translate}}</button>
+
+      <br/>
+      <label>{{'Languages' | translate}}:</label>
+        <img src="img/frenchflag.png" ng-click="changeLanguage('fr')" height="20" width="30"/>
+        <img src="img/englishflag.png" ng-click="changeLanguage('en')" height="20" width="30"/>
+        <img src="img/japanflag.png" ng-click="changeLanguage('jp')" height="20" width="30"/>
+    </ion-content>
+</ion-view>
+
+

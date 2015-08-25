@@ -1,0 +1,19 @@
+<ion-tabs class="tabs-icon-top tabs-color-active-positive">
+
+    <ion-tab title="{{'Scan' | translate}}" icon-off="ion-aperture" icon-on="ion-aperture" href="#/app/scan" ng-controller="activitiesController" ng-click="scanBook()">
+    </ion-tab>
+
+    <ion-tab title="{{'Activities' | translate}}" icon-off="ion-ios-bookmarks-outline" icon-on="ion-ios-bookmarks"
+             href="#/app/activities">
+        <ion-nav-view name="activities"></ion-nav-view>
+    </ion-tab>
+
+    <ion-tab title="{{'Log in' | translate}}" icon-off="ion-ios-person-outline" icon-on="ion-ios-person" href="#/app/login">
+        <ion-nav-view name="login"></ion-nav-view>
+    </ion-tab>
+
+    <ion-tab title="{{'Settings' | translate}}" icon-off="ion-ios-gear-outline" icon-on="ion-ios-gear" href="#/app/settings">
+        <ion-nav-view name="settings"></ion-nav-view>
+    </ion-tab>
+
+</ion-tabs>

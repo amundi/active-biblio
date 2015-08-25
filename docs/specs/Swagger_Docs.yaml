@@ -1,0 +1,608 @@
+# this is an example of the Uber API
+# as a demonstration of an API spec in YAML
+swagger: '2.0'
+info:
+  title: ActiveBiblio API
+  description: ActiveBiblio service API
+  version: "1.0.0"
+# the domain of the service
+# host: Unkown Yet
+# array of all schemes that your API supports
+schemes:
+  - https
+# will be prefixed to all paths
+basePath: /v1
+produces:
+  - application/json
+paths:
+  /books:
+    get:
+      summary: Get Books
+      description: |
+        Well... Books.
+      parameters:
+        - name: author
+          in: query
+          description: Book Author(s)
+          required: false
+          type: string
+        - name: category
+          in: query
+          description: Book Category/Categories
+          required: false
+          type: string
+        - name: book-id
+          in: query
+          description: Book ID
+          required: false
+          type: number
+        - name: ISBN10
+          in: query
+          description: Book ISBN10
+          required: false
+          type: number
+        - name: ISBN13
+          in: query
+          description: Book ISBN10
+          required: false
+          type: number
+        - name: language
+          in: query
+          description: Book language
+          required: false
+          type: string
+        - name: publisher
+          in: query
+          description: Book publisher
+          required: false
+          type: string
+        - name: published_date
+          in: query
+          description: Book published date
+          required: false
+          type: number
+        - name: title
+          in: query
+          description: Book title
+          required: false
+          type: string
+      responses:
+        200:
+          description: An array of books that match search parameters
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Book'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Add Book
+      description: |
+        Well... Books.
+      parameters:
+        - name: author
+          in: query
+          description: Book Author(s)
+          required: true
+          type: string
+        - name: category
+          in: query
+          description: Book Category/Categories
+          required: true
+          type: string
+        - name: ISBN10
+          in: query
+          description: Book ISBN10
+          required: true
+          type: number
+        - name: ISBN13
+          in: query
+          description: Book ISBN10
+          required: true
+          type: number
+        - name: language
+          in: query
+          description: Book language
+          required: true
+          type: string
+        - name: publisher
+          in: query
+          description: Book publisher
+          required: true
+          type: string
+        - name: published_date
+          in: query
+          description: Book published date
+          required: true
+          type: number
+        - name: title
+          in: query
+          description: Book title
+          required: true
+          type: string
+      responses:
+        200:
+          description: Success or fail
+          code:
+            type: number
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /books/:id:
+    get:
+      summary: Get book by ID
+      description: |
+        None
+      parameters:
+        - name: book_id
+          in: query
+          description: Book ID
+          required: true
+          type: number
+      responses:
+        200:
+          description: A book
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Book'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /books/:id/hardcopiesAvailable:
+    get:
+      summary: Get hardcopies from book by ID
+      description: |
+        None
+      parameters:
+        - name: book_id
+          in: query
+          description: Book ID
+          required: true
+          type: number
+      responses:
+        200:
+          description: A array of hardcopies
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Hardcopy'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /books/:id/comments:
+    get:
+      summary: Get comments of book by ID
+      description: |
+        None
+      parameters:
+        - name: book_id
+          in: query
+          description: Book ID
+          required: true
+          type: number
+      responses:
+        200:
+          description: A array of comments
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Comment'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Create a comment
+      description: |
+        None
+      parameters:
+        - name: book_id
+          in: query
+          description: Book ID
+          required: true
+          type: number
+        - name: comment
+          in: query
+          description: Comment text
+          required: true
+          type: string
+      responses:
+        200:
+          description: Success or fail
+          code:
+            type: number
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /books/:id/favorite:
+    get:
+      summary: Is the book in your favorites ?
+      description: |
+        None
+      parameters:
+        - name: book_id
+          in: query
+          description: Book ID
+          required: true
+          type: number
+      responses:
+        200:
+          description: Success or fail
+          code:
+            type: number
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    post:
+      summary: Add the book to favorite
+      description: |
+        None
+      parameters:
+        - name: book_id
+          in: query
+          description: Book ID
+          required: true
+          type: number
+      responses:
+        200:
+          description: Success or fail
+          code:
+            type: number
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    delete:
+      summary: Delete book from favorite
+      description: |
+        None
+      parameters:
+        - name: book_id
+          in: query
+          description: Book ID
+          required: true
+          type: number
+      responses:
+        200:
+          description: Success or fail
+          code:
+            type: number
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /books/:id/like:
+      get:
+        summary: Did you like this book ?
+        description: |
+          None
+        parameters:
+          - name: book_id
+            in: query
+            description: Book ID
+            required: true
+            type: number
+        responses:
+          200:
+            description: Success or fail
+            code:
+              type: number
+          default:
+            description: Unexpected error
+            schema:
+              $ref: '#/definitions/Error'
+      post:
+        summary: Like the book
+        description: |
+          None
+        parameters:
+          - name: book_id
+            in: query
+            description: Book ID
+            required: true
+            type: number
+        responses:
+          200:
+            description: Success or fail
+            code:
+              type: number
+          default:
+            description: Unexpected error
+            schema:
+              $ref: '#/definitions/Error'
+      delete:
+        summary: Unlike book
+        description: |
+          None
+        parameters:
+          - name: book_id
+            in: query
+            description: Book ID
+            required: true
+            type: number
+        responses:
+          200:
+            description: Success or fail
+            code:
+              type: number
+          default:
+            description: Unexpected error
+            schema:
+              $ref: '#/definitions/Error'
+  /books/:id/rate:
+      put:
+        summary: Rate the book
+        description: |
+          None
+        parameters:
+          - name: book_id
+            in: query
+            description: Book ID
+            required: true
+            type: number
+          - name: avg_rate
+            in: query
+            description: Rate
+            required: true
+            type: number
+        responses:
+          200:
+            description: Success or fail
+            code:
+              type: number
+          default:
+            description: Unexpected error
+            schema:
+              $ref: '#/definitions/Error'
+      get:
+        summary: Has the book been rated ?
+        description: |
+          None
+        parameters:
+          - name: book_id
+            in: query
+            description: Book ID
+            required: true
+            type: number
+        responses:
+          200:
+            description: Success or fail
+            code:
+              type: number
+          default:
+            description: Unexpected error
+            schema:
+              $ref: '#/definitions/Error'
+  /books/:id/reservations:
+      post:
+        summary: Reserve the book
+        description: |
+          None
+        parameters:
+          - name: book_id
+            in: query
+            description: Book ID
+            required: true
+            type: number
+        responses:
+          200:
+            description: Success or fail
+            code:
+              type: number
+            reservation_id:
+              type: number
+          default:
+            description: Unexpected error
+            schema:
+              $ref: '#/definitions/Error'
+  /books/:id/reservations/:reservation_id:
+      delete:
+        summary: Delete reservation
+        description: |
+          None
+        parameters:
+          - name: book_id
+            in: query
+            description: Book ID
+            required: true
+            type: number
+          - name: reservation_id
+            in: query
+            description: Reservation ID
+            required: true
+            type: number
+        responses:
+          200:
+            description: Success or fail
+            code:
+              type: number
+          default:
+            description: Unexpected error
+            schema:
+              $ref: '#/definitions/Error'
+  /books/:id/rentals:
+      post:
+        summary: Rent the book
+        description: |
+          None
+        parameters:
+          - name: book_id
+            in: query
+            description: Book ID
+            required: true
+            type: number
+        responses:
+          200:
+            description: Success or fail
+            code:
+              type: number
+            rental_id:
+              type: number
+          default:
+            description: Unexpected error
+            schema:
+              $ref: '#/definitions/Error'
+  /books/:id/rentals/:rental_id/return:
+      put:
+        summary: Return the book
+        description: |
+          None
+        parameters:
+          - name: book_id
+            in: query
+            description: Book ID
+            required: true
+            type: number
+          - name: rental_id
+            in: query
+            description: Rental ID
+            required: true
+            type: number
+        responses:
+          200:
+            description: Success or fail
+            code:
+              type: number
+          default:
+            description: Unexpected error
+            schema:
+              $ref: '#/definitions/Error'
+definitions:
+  Category:
+    properties:
+      name:
+        type: string
+        
+  Comment:
+    properties:
+      id:
+        type: number
+      book_id:
+        type: number
+      Account:
+        $ref: '#/definitions/Account'
+      comment_date:
+        type: string
+      comment_text:
+        type: string
+        
+  Account:
+    properties:
+      email:
+        type: string
+      id:
+        type: number
+        
+  Hardcopy:
+    properties:
+      id:
+        type: number
+      Book:
+        $ref: '#/definitions/Book_From_Harcopy'
+      Location:
+        $ref: '#/definitions/Location'
+      added_date:
+        type: string
+      state:
+        type: string
+      Account:
+        $ref: '#/definitions/Account'
+        
+  Location:
+    properties:
+      building:
+        type: string
+      room:
+        type: string
+      floor:
+        type: number
+      id:
+        type: number
+        
+  Author:
+    properties:
+      name:
+        type: string
+        
+  Rate:
+    properties:
+      avg_rate:
+        type: number
+        
+  Vote:
+    properties:
+      count_like:
+        type: number
+        
+  Book:
+    properties:
+      id:
+        type: number
+      description:
+        type: string
+      language:
+        type: string
+      Categories:
+        type: array
+        items:
+          $ref: '#/definitions/Category'
+      Authors:
+        type: array
+        items:
+          $ref: '#/definitions/Author'
+      photo:
+        type: string
+      title:
+        type: string
+      published_date:
+        type: number
+      publisher:
+        type: string
+      isbn10:
+        type: number
+      isbn13:
+        type: number
+      Rates:
+        type: array
+        items:
+          $ref: '#/definitions/Rate'
+      Votes:
+        type: array
+        items:
+          $ref: '#/definitions/Vote'
+      pages:
+        type: number
+      rental_days_limit:
+        type: number
+        
+  Book_From_Harcopy:
+    properties:
+      id:
+        type: number
+      Categories:
+        type: array
+        items:
+          $ref: '#/definitions/Category'
+      Authors:
+        type: array
+        items:
+          $ref: '#/definitions/Author'
+      title:
+        type: string
+        
+        
+  Error:
+    properties:
+      code:
+        type: integer
+        format: int32
+      error:
+        type: string
