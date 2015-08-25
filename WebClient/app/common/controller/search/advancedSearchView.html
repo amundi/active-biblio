@@ -1,0 +1,56 @@
+<div class="jumbotron">
+    <form name="formAdvancedSearch" ng-submit="search($event)">
+        <div class="form-horizontal square">
+            <h2 class="centered-text">Advanced search</h2>
+            <br/>
+
+                <div class="form-group">
+                    <label class="col-xs-3 control-label">{{'Title' | translate}}:</label>
+                    <div class="col-xs-7">
+                        <input class="form-control" type="text" placeholder="{{'Title' | translate}}" ng-model="title"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-xs-1 col-md-offset-2 control-label">ISBN10: </label>
+                    <div class="col-xs-3">
+                        <input class="form-control" type="text" placeholder="ISBN10" ng-model="isbn10" ng-minlength="10"
+                               ng-maxlength="10">
+                    </div>
+
+                    <label class="col-xs-1  control-label">ISBN13: </label>
+                    <div class="col-xs-3">
+                        <input class="form-control" type="text" placeholder="ISBN13" ng-model="isbn13" ng-minlength="13"
+                               ng-maxlength="13"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-xs-1 col-xs-offset-2 control-label">{{'Author' | translate}}:</label>
+                    <div class="col-xs-3">
+                        <input class="form-control" type="text" placeholder="{{'Author' | translate}}" ng-model="author"/>
+                    </div>
+
+                    <label class="col-xs-1  control-label">{{'Category' | translate}}:</label>
+                    <div class="col-xs-3">
+                        <input class="form-control" type="text" placeholder="{{'Category' | translate}}" ng-model="category"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-xs-1 col-xs-offset-2 control-label">{{'Publisher' | translate}}:</label>
+                    <div class="col-xs-3">
+                        <input class="form-control" type="text" placeholder="{{'Publisher' | translate}}" ng-model="publisher"/>
+                    </div>
+
+                    <label class="col-xs-1  control-label">{{'Published date' | translate}}:</label>
+                    <div class="col-xs-3">
+                        <input class="form-control" type="number" placeholder="{{'Published date' | translate}}" ng-model="published_date"
+                               ng-minlength="4" ng-maxlength="4" min="1900"/>
+                    </div>
+                </div>
+
+                <div class="form-group centered-text"><input class="btn btn-primary" type="submit" value="{{'Search' | translate}}"/></div>
+        </div>
+    </form>
+</div>

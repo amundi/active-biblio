@@ -1,0 +1,10 @@
+*.pyc
+*.sh
+/logs/*
+/tmp
+/local/
+/virtualenv/
+.DS_Store
+
+# PyCharm
+.idea

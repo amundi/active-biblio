@@ -1,0 +1,138 @@
+<div class="jumbotron">
+    <div class="form-horizontal square">
+        <form name="formBookManager" ng-submit="search($event)">
+
+            <div class="centered-text">
+                <h1 >Book manager</h1>
+                <h2>{{'Book properties' | translate}}</h2>
+            </div>
+            <br/>
+
+            <div class="form-group">
+                <label class="col-xs-3 control-label">{{'Title' | translate}}:</label>
+                <div class="col-xs-7">
+                    <input class="form-control" type="text" placeholder="{{'Title' | translate}}" ng-model="title"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-xs-1 col-md-offset-2 control-label">ISBN10: </label>
+                <div class="col-xs-3">
+                    <input class="form-control" type="text" placeholder="ISBN10" ng-model="isbn10" ng-minlength="10"
+                           ng-maxlength="10">
+                </div>
+
+                <label class="col-xs-1  control-label">ISBN13: </label>
+                <div class="col-xs-3">
+                    <input class="form-control" type="text" placeholder="ISBN13" ng-model="isbn13" ng-minlength="13"
+                           ng-maxlength="13"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-xs-1 col-md-offset-2 control-label">{{'Author' | translate}}:</label>
+                <div class="col-xs-3">
+                    <input class="form-control" type="text" placeholder="{{'Author' | translate}}" ng-model="author"/>
+                </div>
+
+                <label class="col-xs-1  control-label">{{'Category' | translate}}:</label>
+                <div class="col-xs-3">
+                    <input class="form-control" type="text" placeholder="{{'Category' | translate}}" ng-model="category"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-xs-1 col-md-offset-2 control-label">{{'Publisher' | translate}}:</label>
+                <div class="col-xs-3">
+                    <input class="form-control" type="text" placeholder="{{'Publisher' | translate}}" ng-model="publisher"/>
+                </div>
+
+                <label class="col-xs-1  control-label">{{'Published date' | translate}}:</label>
+                <div class="col-xs-3">
+                    <input class="form-control" type="number" placeholder="{{'Published date' | translate}}" ng-model="published_date"
+                           ng-minlength="4" ng-maxlength="4" min="1900"/>
+                </div>
+            </div>
+
+            <h2 class="centered-text">{{'Hardcopy properties' | translate}}</h2>
+            <br/>
+
+            <div class="form-group">
+                <label class="col-xs-3 control-label">{{'Location' | translate}}:</label>
+                <div class="col-xs-7">
+                    <select class="form-control" ng-model="locations.selectedLocation"
+                            ng-options="location.building + ':' + location.floor + ':' + location.room for location in locations">
+                        <option value="">--{{'Choose location' | translate}}--</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-xs-3 control-label">{{'State' | translate}}:</label>
+                <div class="col-xs-7">
+                    <select class="form-control" ng-model="states.updated" ng-options="state for state in states">
+                        <option value="">--Choose state--</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="radio">
+                    <label class="col-xs-1 col-xs-offset-5"><input type="radio" ng-model="type" value="books">{{'Books' | translate}}</label>
+                    <label class="col-xs-1"><input type="radio" ng-model="type" value="hardcopies">{{'Hardcopies' | translate}}</label>
+                </div>
+            </div>
+
+            <div class="form-group centered-text">
+                <input class="btn btn-primary" type="submit" value="{{'Search' | translate}}"/>
+                <input ng-if="type=== 'books'" type="button" class="btn btn-primary" ng-click="addBook()" value="{{'Add' |
+            translate}}"/>
+            </div>
+        </form>
+
+        <div ng-if="results">
+            <hr><br/>
+            <div class="centered-text">
+                <h2>{{'Results found' | translate}}</h2>
+            </div>
+            <br/>
+
+            <div ng-repeat="result in results">
+                <div ng-if="type_selected === 'books'">
+                    <h3>{{ result.title | limitTo: 45 }}</h3>
+                    <h4>{{ result.Authors[0].name }}</h4>
+                </div>
+                <div ng-if="type_selected === 'hardcopies'">
+                    <h3>{{result.Book.title}}</h3>
+                    <h4>{{result.Book.Authors[0].name}}</h4>
+
+                    <p>{{result.added_date | date: 'dd/MM/yyyy - HH:mm:ss'}}</p>
+
+                    <p>{{result.owner}}</p>
+
+                    <p>{{result.state}}</p>
+
+                    <p>{{result.Location.building}}:{{result.Location.floor}}:{{result.Location.room}}</p>
+                </div>
+
+                <button type="button" class="btn btn-primary" ng-click="update(result.id)">{{'Update' |
+                    translate}}
+                </button>
+
+                <div ng-if="type_selected === 'books'">
+                    <label>{{'Location' | translate}}
+                        <select ng-model="locations.addedLocation"
+                                ng-options="location.building + ':' + location.floor + ':' + location.room for location in locations">
+                        </select>
+                    </label>
+                    <button type="button" class="btn btn-primary" ng-click="addHardcopy(result)">
+                        Add a hardcopy
+                    </button>
+                </div>
+                <button ng-if="type_selected === 'hardcopies'" type="button" class="btn btn-danger"
+                        ng-click="delete(result.id)">
+                    X
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

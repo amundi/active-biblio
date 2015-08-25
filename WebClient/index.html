@@ -1,0 +1,62 @@
+<!doctype html>
+
+<html ng-app="ActiveBiblio" class="no-js" lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <title>ActiveBiblio</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+
+    <link rel="stylesheet" type="text/css" media="screen"
+          href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css"/>
+    <link rel="stylesheet" href="assets/css/style.css"/>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular.min.js"></script>
+    <script src="http://angular-ui.github.io/ui-router/release/angular-ui-router.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+
+    <script src="assets/angular-translate/angular-translate.js"></script>
+    <script src="assets/angular-translate/angular-translate-storage-cookie.js"></script>
+    <script src="assets/angular-translate/angular-translate-storage-local.js"></script>
+    <script src="assets/angular-translate/angular-translate-loader-static-files.js"></script>
+
+    <script src="config.js"></script>
+    <script src="index.js"></script>
+
+    <script src="app/activebiblio/books/listBookController.js"></script>
+    <script src="app/activebiblio/books/bookDetailsController.js"></script>
+
+    <script src="app/activebiblio/admin/accounts/accountsController.js"></script>
+    <script src="app/activebiblio/admin/books/booksManagerController.js"></script>
+    <script src="app/activebiblio/admin/books/updateBookController.js"></script>
+    <script src="app/activebiblio/admin/books/updateHardcopyController.js"></script>
+    <script src="app/activebiblio/admin/books/addBookController.js"></script>
+    <script src="app/activebiblio/admin/locations/locationsManagerController.js"></script>
+
+    <script src="app/activebiblio/user/favorites/favoritesController.js"></script>
+    <script src="app/activebiblio/user/rentals/rentalsController.js"></script>
+    <script src="app/activebiblio/user/reservations/reservationsController.js"></script>
+    <script src="app/activebiblio/user/hardcopies/hardcopiesController.js"></script>
+
+    <script src="app/common/controller/login/loginController.js"></script>
+    <script src="app/common/controller/search/advancedSearchController.js"></script>
+    <script src="app/components/navbar/navbarController.js"></script>
+
+    <script src="app/common/services/search/searchService.js"></script>
+    <script src="app/common/services/like/likeService.js"></script>
+    <script src="app/common/services/favorite/favoriteService.js"></script>
+    <script src="app/common/services/authRequest/authRequestService.js"></script>
+
+</head>
+
+<body>
+    <header ng-include="'app/components/navbar/navbarView.html'" id="header" ng-controller="navbarController"></header>
+
+    <div id="main">
+        <div ui-view></div>
+    </div>
+</body>
+</html>

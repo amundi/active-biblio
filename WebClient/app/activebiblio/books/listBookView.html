@@ -1,0 +1,45 @@
+<div class="jumbotron">
+    <div class="container">
+        <fieldset>
+            <legend>{{'Search' | translate}}</legend>
+            <table class="table table-responsive">
+                <tr>
+                    <th></th>
+                    <th>{{'Results found' | translate}}</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr ng-repeat="book in books">
+                    <td align="center">
+                        <img ng-src="{{ book.photo }}" height="130" width="90" ng-click="go(book.id)"/>
+                    </td>
+                    <td>
+                        <h3 ng-click="go(book.id)">{{ book.title | limitTo: 45 }}</h3>
+                        <h4>{{ book.Authors[0].name }} -- {{ book.Categories[0].name }}</h4>
+                        <h4>{{ book.description | limitTo: 135 }}...</h4>
+                    </td>
+                    <td>
+                        <div id="score"> {{ book.Votes[0].count_like}}</div>
+                    </td>
+                    <td>
+                        <img ng-if="book.is_liked" ng-src="assets/image/like.png" height="20" width="20"
+                             ng-click="like(book)"/>
+                        <img ng-if="!book.is_liked" ng-src="assets/image/unlike.png" height="20" width="20"
+                             ng-click="like(book)"/>
+                    </td>
+                    <td>
+                        <img ng-if="book.is_favorited" ng-src="assets/image/favorite.png" height="20" width="20"
+                             ng-click="favorite(book)"/>
+                        <img ng-if="!book.is_favorited" ng-src="assets/image/unfavorite.png" height="20" width="20"
+                             ng-click="favorite(book)"/>
+                    </td>
+                    <td>
+                        <button class="btn btn-success" ng-click="reserve(book.id)">{{'Reserve' | translate}}</button>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="jumbotron">
+    <div class="container">
+        <fieldset>
+            <legend>{{'Hardcopies added' | translate}}</legend>
+            <table class="table table-responsive" ng-if="addedHardcopies">
+                <tr>
+                    <th>{{'Book' | translate}}</th>
+                    <th>{{'Added date' | translate}}</th>
+                    <th>{{'State' | translate}}</th>
+                    <th>{{'Location' | translate}}</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr ng-repeat="addedHardcopy in addedHardcopies">
+                    <td ng-click="go(addedHardcopy.Book.id)">{{ addedHardcopy.Book.title }} - {{
+                        addedHardcopy.Book.Authors[0].name }}
+                    </td>
+                    <td>{{ addedHardcopy.added_date | date: 'dd/MM/yyyy - HH:mm' }}</td>
+                    <td>{{ addedHardcopy.state }}</td>
+                    <td>
+                        {{addedHardcopy.Location.building}}:{{addedHardcopy.Location.floor}}:{{addedHardcopy.Location.room}}
+                    </td>
+                    <td>
+                        <button class="btn btn-success" ng-click="addReservation(addedHardcopy.Book.id)">
+                            {{'Reserve' | translate}}
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+    </div>
+</div>

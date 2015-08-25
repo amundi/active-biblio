@@ -1,0 +1,6 @@
+'use strict';
+
+angular.module('active.config', [])
+    .constant('config', {
+        'URL': 'http://localhost:8080'
+    });

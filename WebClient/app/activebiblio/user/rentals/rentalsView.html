@@ -1,0 +1,53 @@
+<div class="jumbotron">
+    <div class="container">
+        <fieldset>
+            <legend>{{'Current rentals' | translate}}</legend>
+            <table class="table table-responsive" ng-if="currentRentals">
+                <tr>
+                    <th>{{'Book' | translate}}</th>
+                    <th>{{'Return date' | translate}}</th>
+                    <th>
+                        <label>{{'Location' | translate}}
+                            <select ng-options="location.building + ':' + location.floor + ':' + location.room for location in locations"
+                                    ng-model="locations.selectedLocation">
+                            </select>
+                        </label>
+                    </th>
+                    <th></th>
+                </tr>
+                <tr ng-repeat="currentRental in currentRentals">
+                    <td ng-click="go(currentRental.Book.id)">{{ currentRental.Book.title }} - {{
+                        currentRental.Book.Authors[0].name }}
+                    </td>
+                    <td>{{ currentRental.return_date | date: 'dd/MM/yyyy - HH:mm' }}</td>
+                    <td>
+                        <button class="btn btn-success" ng-click="return(currentRental)">
+                            {{'Return' | translate}}
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+        <fieldset>
+            <legend>{{'History rentals' | translate}}</legend>
+            <table class="table table-responsive" ng-if="historyRentals">
+                <tr>
+                    <th>{{'Book' | translate}}</th>
+                    <th>{{'Rental date' | translate}}</th>
+                    <th></th>
+                </tr>
+                <tr ng-repeat="historyRental in historyRentals">
+                    <td ng-click="go(historyRental.Book.id)">{{ historyRental.Book.title }} - {{
+                        historyRental.Book.Authors[0].name }}
+                    </td>
+                    <td>{{ historyRental.rental_date | date: 'dd/MM/yyyy - HH:mm' }}</td>
+                    <td>
+                        <button class="btn btn-success" ng-click="addReservation(historyRental.Book.id)">
+                            {{'Reserve' | translate}}
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+    </div>
+</div>

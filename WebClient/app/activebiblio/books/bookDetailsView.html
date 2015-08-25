@@ -1,0 +1,66 @@
+<div class="jumbotron">
+    <div class="square">
+        <table class="table table-responsive">
+            <tr>
+                <td>
+                    <img ng-src="{{ book.photo }}"/>
+                </td>
+                <td>
+                    <h1>{{ book.title }}</h1>
+
+                    <p>{{ book.Authors[0].name }}</p>
+
+                    <p>{{ book.Categories[0].name }}</p>
+
+                    <p>{{ book.description }}</p>
+
+                    <p><b>ISBN10:</b> {{ book.isbn10 }}</p>
+
+                    <p><b>ISBN13:</b> {{ book.isbn13 }}</p>
+
+                    <p><b>{{'Publisher' | translate}}:</b> {{ book.publisher }}</p>
+
+                    <p><b>{{'Published date' | translate}}:</b> {{ book.published_date }}</p>
+
+                    <p><b>{{'Language' | translate}}:</b> {{ book.language }}</p>
+
+                    <p><b>{{'Pages' | translate}}:</b> {{ book.pages }}</p>
+                </td>
+            </tr>
+        </table>
+        <img ng-if="book.is_liked" ng-src="assets/image/like.png" height="20" width="20" ng-click="like(book)"/>
+        <img ng-if="!book.is_liked" ng-src="assets/image/unlike.png" height="20" width="20" ng-click="like(book)"/>
+
+        <img ng-if="book.is_favorited" ng-src="assets/image/favorite.png" height="20" width="20"
+             ng-click="favorite(book)"/>
+        <img ng-if="!book.is_favorited" ng-src="assets/image/unfavorite.png" height="20" width="20"
+             ng-click="favorite(book)"/>
+
+        <button class="btn btn-success" ng-click="reserve(book.id)">{{'Reserve' | translate}}</button>
+    </div>
+
+    <h3>{{'What readers think...' | translate}}</h3>
+
+    <div>
+        <table class="table table-responsive" style="width:100%; table-layout: fixed;">
+            <tr ng-repeat="comment in comments">
+                <td>
+                    {{ comment.Account.email }}<br/>
+                    {{ comment.comment_date | date: 'dd/MM/yyyy - HH:mm:ss' }}
+                </td>
+                <td width="70%">
+                    <p style="word-wrap: break-word;overflow-wrap: break-word; width: 100%; text-align: justify">
+                        {{comment.comment_text }}
+                    </p>
+                </td>
+                <td ng-if="type === 'Admin'" align="center">
+                    <button class="btn btn-danger" ng-click="deleteComment(comment.id)">X</button>
+                </td>
+            </tr>
+        </table>
+        <div class="comment_specific_book">
+            <input type="text" ng-model="comment_box" placeholder="{{'Comment' | translate}}">
+            <button type="submit" class="btn btn-primary" ng-click="addComment()">{{'Add comment' | translate}}</button>
+        </div>
+    </div>
+</div>

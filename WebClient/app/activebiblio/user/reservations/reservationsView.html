@@ -1,0 +1,35 @@
+<div class="jumbotron">
+    <div class="container">
+        <fieldset>
+            <legend>{{'Reservation' | translate}}</legend>
+            <table class="table table-responsive" ng-if="reservations">
+                <tr>
+                    <th>{{'Book' | translate}}</th>
+                    <th>{{'Order' | translate}}</th>
+                    <th>{{'Deadline' | translate}}</th>
+                    <th>{{'Hardcopy location' | translate}}</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr ng-repeat="reservation in reservations">
+                    <td ng-click="go(reservation.Book.id)">{{ reservation.Book.title }} - {{
+                        reservation.Book.Authors[0].name }}
+                    </td>
+                    <td>{{ reservation.queue_order }}</td>
+                    <td>{{ reservation.reservation_deadline | date: 'dd/MM/yyyy - HH:mm' }}</td>
+                    <td>{{ reservation.Location.building }}:{{ reservation.Location.floor }}:{{
+                        reservation.Location.room }}
+                    </td>
+                    <td ng-if="reservation.queue_order == 0">
+                        <button class="btn btn-success" ng-click="rent(reservation)">
+                            {{'Rent' | translate}}
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger" ng-click="deleteReservation(reservation.Book.id)">X</button>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+    </div>
+</div>

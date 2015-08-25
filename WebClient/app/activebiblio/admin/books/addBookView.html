@@ -1,0 +1,110 @@
+<div class="jumbotron">
+    <form name="formAddLocation" ng-submit="add($event)">
+        <div class="form-horizontal square">
+            <h2 class="centered-text">Add a book</h2>
+            <br/>
+
+            <div class="form-group">
+                <label class="col-xs-1 col-md-offset-2 control-label">ISBN10:</label>
+                <div class="col-xs-3">
+                    <input class="form-control" type="text" placeholder="ISBN10" ng-model="isbn10" minlength="10" maxlength="10" required>
+                </div>
+
+                <label class="col-xs-1  control-label">ISBN13:</label>
+                <div class="col-xs-3">
+                    <input class="form-control" type="text" placeholder="ISBN13" ng-model="isbn13" minlength="13" maxlength="13" required/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-xs-3 control-label">{{'Title' | translate}}:</label>
+                <div class="col-xs-7">
+                    <input class="form-control" type="text" placeholder="{{'Title' | translate}}" ng-model="title" required/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-xs-1 col-xs-offset-2 control-label">{{'Publisher' | translate}}:</label>
+                <div class="col-xs-3">
+                    <input class="form-control" type="text" placeholder="{{'Publisher' | translate}}" ng-model="publisher"/>
+                </div>
+
+                <label class="col-xs-1  control-label">{{'Published date' | translate}}:</label>
+                <div class="col-xs-3">
+                    <input class="form-control" type="number" placeholder="{{'Published date' | translate}}" ng-model="published_date"
+                           ng-minlength="4" ng-maxlength="4" min="1900" required/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-xs-3 control-label">{{'Description' | translate}}:</label>
+                <div class="col-xs-7">
+                    <input class="form-control" type="text" placeholder="{{'Description' | translate}}" ng-model="description"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-xs-1 col-xs-offset-2 control-label">{{'Pages' | translate}}:</label>
+                <div class="col-xs-3">
+                    <input class="form-control" type="number" placeholder="{{'Pages' | translate}}" ng-model="pages" min="1" required/>
+                </div>
+
+                <label class="col-xs-1  control-label">{{'Language' | translate}}:</label>
+                <div class="col-xs-3">
+                    <input class="form-control" type="text" placeholder="{{'Language' | translate}}" ng-model="language" required/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-xs-3 control-label">{{'Photo' | translate}}:</label>
+                <div class="col-xs-7">
+                    <input class="form-control" type="text" placeholder="{{'Photo' | translate}}" ng-model="photo"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-xs-3 control-label">{{'Author' | translate}}:</label>
+                <div class="col-xs-7">
+                    <input class="form-control" type="text" placeholder="{{'Author' | translate}}" ng-model="authorAdded"/>
+                </div>
+                <div class="col-xs-1">
+                    <input class="btn btn-success" type="button" ng-click="addAuthor(authorAdded); authorAdded = null" value="+"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div ng-repeat="author in authors track by $index">
+                    <div class="col-xs-7 col-xs-offset-3">
+                        <input class="form-control" type="text" ng-model="author" ng-change="authors[$index] = author"/>
+                    </div>
+                    <div class="col-xs-1">
+                        <input class="btn btn-danger" type="button" ng-click="deleteAuthor($index)" value="X"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-xs-3 control-label">{{'Category' | translate}}:</label>
+                <div class="col-xs-7">
+                    <input class="form-control" type="text" placeholder="{{'Category' | translate}}" ng-model="categoryAdded"/>
+                </div>
+                <div class="col-xs-1">
+                    <input class="btn btn-success" type="button" ng-click="addCategory(categoryAdded); categoryAdded = null" value="+"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div ng-repeat="category in categories track by $index">
+                    <div class="col-xs-7 col-xs-offset-3">
+                        <input class="form-control" type="text" ng-model="category" ng-change="categories[$index] = category"/>
+                    </div>
+                    <div class="col-xs-1">
+                        <input class="btn btn-danger" type="button" ng-click="deleteCategory($index)" value="X"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group centered-text"><input class="btn btn-primary" type="submit" value="{{'Add' | translate}}"/></div>
+        </div>
+    </form>
+</div>

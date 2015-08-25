@@ -1,0 +1,51 @@
+<div class="jumbotron">
+    <form name="formUpdateHardcopy" ng-submit="update($event)">
+        <div class="form-horizontal square">
+            <div class="centered-text">
+                <h1>{{'Update' | translate}}</h1>
+            </div>
+            <br/>
+
+            <div class="form-group">
+                <label class="col-xs-3 control-label">{{'Title' | translate}}:</label>
+                <div class="col-xs-7">
+                    <input class="form-control" type="text" ng-model="hardcopy.title" disabled/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-xs-3 control-label">{{'Owner' | translate}}:</label>
+                <div class="col-xs-7">
+                    <input class="form-control" type="text" ng-model="hardcopy.owner" disabled/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-xs-3 control-label">{{'Added date' | translate}}:</label>
+                <div class="col-xs-7">
+                    <input class="form-control" type="number" placeholder="{{result.added_date | date: 'dd/MM/yyyy - HH:mm'}}"
+                           ng-model="added_date" disabled/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-xs-3 control-label">{{'Location' | translate}}:</label>
+                <div class="col-xs-7">
+                    <select class="form-control" ng-model="locations.updatedLocation"
+                            ng-options="location.building + ':' + location.floor + ':' + location.room for location in locations">
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-xs-3 control-label">{{'State' | translate}}:</label>
+                <div class="col-xs-7">
+                    <select class="form-control" ng-model="states.updated" ng-options="state for state in states">
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group centered-text"><input type="submit" class="btn btn-primary" value="{{'Update' | translate}}"/></div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,39 @@
+<div class="jumbotron">
+    <form name="formAddLocation" ng-submit="add($event)">
+        <div class="form-horizontal square">
+            <div class="centered-text">
+                <h1>{{'Location manager' | translate}}</h1>
+                <h2>{{'Add' | translate}}</h2>
+            </div>
+            <br/>
+
+            <div class="form-group">
+                <div class="col-xs-2 col-xs-offset-3">
+                    <input class="form-control" type="text" placeholder="{{'Building' | translate}}" ng-model="building" required/>
+                </div>
+                <div class="col-xs-2">
+                    <input class="form-control" type="number" placeholder="{{'Floor' | translate}}" ng-model="floor" min="0" required/>
+                </div>
+                <div class="col-xs-2">
+                    <input class="form-control" type="text" placeholder="{{'Room' | translate}}" ng-model="room" required/>
+                </div>
+            </div>
+            <div class="form-group centered-text"><input type="submit" class="btn btn-primary" value="{{'Add' | translate}}"/></div>
+
+            <div class="centered-text">
+                <h2>{{'Delete' | translate}}</h2>
+            </div>
+            <br/>
+
+            <div class="form-group">
+                <label class="col-xs-3 col-xs-offset-2 control-label">{{'Location' | translate}}</label>
+                <div class="col-xs-2">
+                    <select class="form-control" ng-model="locations.selectedLocation"
+                            ng-options="location.building + ':' + location.floor + ':' + location.room for location in locations">
+                    </select>
+                </div>
+                <input type="button" class="btn btn-danger col-xs-1" ng-click="delete()" value="X"/>
+            </div>
+        </div>
+    </form>
+</div>

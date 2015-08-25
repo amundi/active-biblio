@@ -1,0 +1,25 @@
+<div class="jumbotron">
+    <div class="container">
+        <form name="formAccounts">
+            <table class="table table-hover table-condensed table-responsive">
+                <tr>
+                    <th></th>
+                    <th>{{'Email' | translate}}</th>
+                    <th>{{'Type' | translate}}</th>
+                    <th>{{'State' | translate}}</th>
+                    <th>{{'Last login' | translate}}</th>
+                </tr>
+                <tr ng-repeat="account in accounts">
+                    <td><input type="radio" ng-model="$parent.account" ng-value="{{ account }}"></td>
+                    <td>{{ account.email }}</td>
+                    <td>{{ account.type }}</td>
+                    <td>{{ account.state }}</td>
+                    <td>{{ account.last_login_date | date: 'dd/MM/yyyy - HH:mm' }}</td>
+                </tr>
+            </table>
+            <button class="btn btn-danger" ng-click="lockAccount(account)">
+                {{'(Un)lock account' | translate}}
+            </button>
+        </form>
+    </div>
+</div>

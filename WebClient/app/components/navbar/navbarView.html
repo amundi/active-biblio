@@ -1,0 +1,56 @@
+<header data-target=".navbar-fixed-top">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="brand navbar-left" ui-sref="app">
+                    <img src="assets/image/home.png" height="50" width="50"/>
+                </a>
+                <a class="navbar-brand" ui-sref="app">{{'Active Biblio' | translate}}</a>
+            </div>
+            <div class="collapse navbar-collapse navbar-left navbar-main-collapse">
+                <ul class="nav navbar-nav">
+
+                    <li ng-if="logged" class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle">{{'User' | translate}} <b
+                                class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a ui-sref="user.favorites">{{'Favorites' | translate}}</a></li>
+                            <li><a ui-sref="user.rentals">{{'Rentals' | translate}}</a></li>
+                            <li><a ui-sref="user.reservations">{{'Reservations' | translate}}</a></li>
+                            <li><a ui-sref="user.hardcopies">{{'Hardcopies' | translate}}</a></li>
+                        </ul>
+                    </li>
+                    <li ng-if="type === 'Admin'" class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle">{{'Admin' | translate}} <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a ui-sref="admin.accounts">{{'Accounts' | translate}}</a></li>
+                            <li><a ui-sref="admin.books">{{'Books' | translate}}</a></li>
+                            <li><a ui-sref="admin.locations">{{'Locations' | translate}}</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="nav navbar-nav navbar-right">
+                <img src="assets/image/frenchflag.png" ng-click="changeLanguage('fr')" height="15" width="15"/>
+                <img src="assets/image/englishflag.png" ng-click="changeLanguage('en')" height="15" width="15"/>
+                <img src="assets/image/japanflag.png" ng-click="changeLanguage('jp')" height="15" width="15"/>
+            </div>
+            <form class="navbar-form navbar-right" role="login">
+                <a ng-if="!logged" ui-sref="login">
+                    <button type="button" class="btn btn-primary">{{'Log in' | translate}}</button>
+                </a>
+
+                <div ng-if="logged">
+                    <button type="button" class="btn btn-primary" ng-click="logout()">{{'Log out' | translate}}</button>
+                </div>
+            </form>
+            <form class="navbar-form navbar-right" role="search" ng-controller="navbarController">
+                <div class="form-group">
+                    <input type="search" class="form-control" placeholder="{{'Search' | translate}}" ng-model="search">
+                </div>
+                <button type="submit" class="btn btn-success" ng-click="searchAll()">{{'Search' | translate}}</button>
+                <a ui-sref="advancedSearch" class="navbar-link">{{'Advanced' | translate}}</a>
+            </form>
+        </div>
+    </nav>
+</header>

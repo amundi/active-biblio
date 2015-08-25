@@ -1,0 +1,102 @@
+.specific-book-view {
+    text-align: justify;
+}
+
+.specific-book-view img {
+    margin-top: 2%;
+}
+
+body, .navbar-default {
+    background: url(http://subtlepatterns.com/patterns/school.png) repeat fixed;
+}
+
+legend {
+    border-bottom: none;
+    font-size: 120%;
+    font-style: italic;
+    text-decoration: underline;
+}
+
+img {
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    border-style: solid;
+}
+
+input {
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    border: thin solid;
+    padding-left: 1%;
+    outline: 0;
+    margin-bottom: 5px;
+    transition-duration: .5s;
+}
+
+[ng-click], [data-ng-click], [x-ng-click] {
+    cursor: pointer;
+}
+
+input:focus::-webkit-input-placeholder {
+    color: transparent;
+}
+
+input:focus:-moz-placeholder {
+    color: transparent;
+}
+
+/* FF 4-18 */
+input:focus::-moz-placeholder {
+    color: transparent;
+}
+
+/* FF 19+ */
+input:focus:-ms-input-placeholder {
+    color: transparent;
+}
+
+/* IE 10+ */
+input:focus {
+    background-color: #e0ffff;
+}
+
+small {
+    font-size: medium;
+}
+
+h2 {
+    font-size: 200%;
+}
+
+#score {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+td {
+    font-size: 80%;
+    vertical-align: middle;
+}
+
+input[type=search], .square {
+    background: url(http://subtlepatterns.com/patterns/congruent_pentagon.png) repeat fixed;
+}
+
+input[type=comment] {
+    width: 200%;
+}
+
+.square {
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    border: solid #006400;
+    margin-top: 5%;
+    padding: 40px;
+}
+
+.centered-text {
+    text-align:center
+}

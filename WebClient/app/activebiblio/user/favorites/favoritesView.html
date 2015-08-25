@@ -1,0 +1,31 @@
+<div class="jumbotron">
+    <div class="container">
+        <fieldset>
+            <legend>{{'Favorites' | translate}}</legend>
+            <table class="table table-responsive">
+                <tr>
+                    <th>{{'Favorites' | translate}}</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr ng-repeat="favorite in favorites">
+                    <td>
+                        <img ng-src="assets/image/favorite.png" height="20" width="20"
+                             ng-click="unfavorite(favorite.Book.id)"/>
+                    </td>
+                    <td ng-click="go(favorite.Book.id)">
+                        {{ favorite.Book.title | limitTo: 45 }}
+                    </td>
+                    <td>
+                        {{ favorite.Book.Authors[0].name }}
+                    </td>
+                    <td>
+                        <button class="btn btn-success" ng-click="reserve(favorite.Book.id)">{{'Reserve' | translate}}
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+    </div>
+</div>
