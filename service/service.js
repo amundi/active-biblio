@@ -270,7 +270,7 @@ app.delete('/location/:id', function (req, res) {
     }
 });
 
-app.listen(8090);
+app.listen(8080);
 console.log("Server's listenning");
 
 exports.app = app;
