@@ -148,3 +148,7 @@ More examples:
 
     curl localhost:8080/login -X POST -d mail=admin -d password=admin
     # should pass if the password file has a line: admin:admin
+
+The [SQLite command line client][1] can be an indispensable tool for debugging.
+
+[1]: https://www.sqlite.org/download.html
