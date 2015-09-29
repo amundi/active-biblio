@@ -32,8 +32,8 @@ exports.config = {
     }
 };
 
-// Admin accounts
-exports.admin_file = "";
+// Admin accounts: one username per line
+exports.admin_file = "local/admins.txt";
 
 // Mailing system
 exports.mailing = {
