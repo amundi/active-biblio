@@ -3,7 +3,7 @@ exports.auth = {
     method: 'webservice',
     params: {
       wsdl_file: 'local/company-auth.wsdl',
-      extra_args: ['domain', 'department', ...]
+      extra_args: ['domain', 'department', '...']
     }
 };
 
