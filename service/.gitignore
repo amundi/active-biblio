@@ -1,5 +1,9 @@
-*.sh
-.idea/*
-local/*
-node_modules/*
+# WebStorm
+.idea
+
+# Node
+node_modules
+
+# Project
 config.js
+local
