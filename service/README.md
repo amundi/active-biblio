@@ -143,3 +143,8 @@ For unit testing:
 
 2. An easy way to do sanity checks with `curl`, for example: `curl localhost:8080/books`
   - A non-empty `http_proxy` variable may cause problems. In that case: `http_proxy= curl localhost:8080/books`
+
+More examples:
+
+    curl localhost:8080/login -X POST -d mail=admin -d password=admin
+    # should pass if the password file has a line: admin:admin
