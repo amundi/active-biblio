@@ -131,5 +131,4 @@ For unit testing:
 ![Running mocha](docs/specs/images/running_mocha.png)
 
 - On the command line:
-	- Inside the project directory, set is_test=true and run: `mocha tests`   
-	- Restart command line after 
+	- Inside the project directory, run: `mocha tests`
