@@ -134,3 +134,12 @@ For unit testing:
 
 - On the command line:
 	- Inside the project directory, run: `mocha tests`
+
+### Debugging
+
+1. Make sure the tests are running
+  - Good to do sanity test before you start working
+  - Re-run the tests before creating Merge Requests
+
+2. An easy way to do sanity checks with `curl`, for example: `curl localhost:8080/books`
+  - A non-empty `http_proxy` variable may cause problems. In that case: `http_proxy= curl localhost:8080/books`
