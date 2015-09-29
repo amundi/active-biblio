@@ -14,8 +14,15 @@ then install [Microsoft visual c++ 2012 redistributable (x64)]
 
 Insert the project in `/www` repository and complete the `config.js` file like in the config example.     
 
-### Run
+### Running WAMP
 
 - Run WAMP server (a green **W** should appear on the desktop bar).   
 - On the browser, go to `localhost/WebClient`.   
- 
+
+### Running in WebStorm
+
+1. Open `index.html` in WebStorm
+
+2. Hover the mouse over the html code, and a toolbar will pop up
+   in the top-right corner with multiple browser choices.
+   http://stackoverflow.com/a/23590431/641955
