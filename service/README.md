@@ -130,5 +130,7 @@ For unit testing:
 
 ![Running mocha](docs/specs/images/running_mocha.png)
 
+- To re-run tests: Alt + Shift + R
+
 - On the command line:
 	- Inside the project directory, run: `mocha tests`
