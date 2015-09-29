@@ -88,6 +88,10 @@ input[type=comment] {
     width: 200%;
 }
 
+#main {
+    padding: 20px;
+}
+
 .square {
     -moz-border-radius: 6px;
     -webkit-border-radius: 6px;

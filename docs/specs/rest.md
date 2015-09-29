@@ -35,8 +35,8 @@ Think of it as a Book class in Java.
 - GET /books/:id/rate -> Returns if a book has been rated (and mark) or not by the user
 - POST /books/:id/reservations -> Reserve the book
 - DELETE /books/:id/reservations -> Cancel the reservation
-- POST /books/:id/rentals -> Rent the book
-- PUT /books/:id/rentals/ -> Returns the book
+- POST /books/:id/borrows -> Borrow the book
+- PUT /books/:id/borrows/ -> Returns the book
 
 ### Hardcopies
 
@@ -49,8 +49,8 @@ Think of it as an instance of the Book class in Java.
 
 ### Users  
 
-- GET /users/rentals -> Returns current rentals
-- GET /users/history/rentals -> Returns rentals finished
+- GET /users/borrows -> Returns current borrows
+- GET /users/history/borrows -> Returns borrows finished
 - GET /users/hardcopies -> Returns hardcopies added by the user
 - GET /users/reservations -> Returns reservations
 - GET /users/favorites -> Returns favorites from an account   

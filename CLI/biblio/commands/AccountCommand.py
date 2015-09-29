@@ -8,8 +8,8 @@ class AccountCommand(BaseCommand):
     def __init__(self):
         self.actions = {
             # User and Admin options
-            "current-rentals": self.current_rentals,
-            "history-rentals": self.history_rentals,
+            "current-borrows": self.current_borrows,
+            "history-borrows": self.history_borrows,
             "added-hardcopies": self.added_hardcopies,
             "reservations": self.reservations,
             "favorites": self.get_favorites,
@@ -32,11 +32,11 @@ class AccountCommand(BaseCommand):
     def get_action(self, action):
         return self.actions[action]
 
-    def current_rentals(self, args):
-        controller.get_current_rentals()
+    def current_borrows(self, args):
+        controller.get_current_borrows()
 
-    def history_rentals(self, args):
-        controller.get_history_rentals()
+    def history_borrows(self, args):
+        controller.get_history_borrows()
 
     def added_hardcopies(self, args):
         controller.get_added_hardcopies()

@@ -4,7 +4,7 @@ var cors = require('cors');
 var requests_accounts = require('./requests/accounts');
 var requests_books = require('./requests/books');
 var requests_hardcopies = require('./requests/hardcopies');
-var requests_rentals = require('./requests/rentals');
+var requests_borrows = require('./requests/borrows');
 var requests_reservations = require('./requests/reservations');
 var requests_comments = require('./requests/comments');
 var requests_favorite = require('./requests/favorite');
@@ -23,7 +23,7 @@ app.use(cors({origin: config.access_control}));
 // Server is waiting for requests
 // 3 types :
 // - No need to be authenticated: search/get book
-// - User authentication: reservation/rental and account management
+// - User authentication: reservation/borrow and account management
 // - Admin authentication: book/hardcopies management
 
 app.post('/login', function (req, res) {
@@ -200,15 +200,15 @@ app.put('/admin/accounts/:id/upgrade', function (req, res) {
     }
 });
 
-app.get('/users/rentals', function (req, res) {
+app.get('/users/borrows', function (req, res) {
     if (authentication.is_authenticated(req, res)) {
-        requests_rentals.get_account_rentals(req, res);
+        requests_borrows.get_account_borrows(req, res);
     }
 });
 
-app.get('/users/history/rentals', function (req, res) {
+app.get('/users/history/borrows', function (req, res) {
     if (authentication.is_authenticated(req, res)) {
-        requests_rentals.get_account_history_rentals(req, res);
+        requests_borrows.get_account_history_borrows(req, res);
     }
 });
 
@@ -242,15 +242,15 @@ app.delete('/books/:id/reservations', function (req, res) {
     }
 });
 
-app.post('/books/:id/rentals', function (req, res) {
+app.post('/books/:id/borrows', function (req, res) {
     if (authentication.is_authenticated(req, res)) {
-        requests_rentals.rent(req, res);
+        requests_borrows.rent(req, res);
     }
 });
 
-app.put('/books/:id/rentals/', function (req, res) {
+app.put('/books/:id/borrows/', function (req, res) {
     if (authentication.is_authenticated(req, res)) {
-        requests_rentals.rental_return(req, res);
+        requests_borrows.borrow_return(req, res);
     }
 });
 
@@ -270,7 +270,7 @@ app.delete('/location/:id', function (req, res) {
     }
 });
 
-app.listen(8080);
+app.listen(8090);
 console.log("Server's listenning");
 
 exports.app = app;

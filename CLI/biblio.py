@@ -48,7 +48,7 @@ def parse_args():
     parser_books.add_argument('-Pa', '--pages', dest='pages', type=int)
     parser_books.add_argument('-Ph', '--photo', dest='photo')
     parser_books.add_argument('-r', '--rate', dest='rate')
-    parser_books.add_argument('-Rl', '--rental-days-limit', dest='rental_days_limit', type=int)
+    parser_books.add_argument('-Rl', '--borrow-days-limit', dest='borrow_days_limit', type=int)
     parser_books.add_argument('-t', '--title', dest='title', type=str)
     parser_books.set_defaults(func=BookCommand().execute)
 
@@ -66,7 +66,7 @@ def parse_args():
     parser_hardcopies.add_argument('-Pa', '--pages', dest='pages', type=int)
     parser_hardcopies.add_argument('-P', '--published_date', dest='published_date', type=int)
     parser_hardcopies.add_argument('-p', '--publisher', dest='publisher', type=str)
-    parser_hardcopies.add_argument('-Rl', '--rental-days-limit', dest='rental_days_limit', type=int)
+    parser_hardcopies.add_argument('-Rl', '--borrow-days-limit', dest='borrow_days_limit', type=int)
     parser_hardcopies.add_argument('-s', '--state', dest='state', type=str)
     parser_hardcopies.add_argument('-t', '--title', dest='title', type=str)
     parser_hardcopies.set_defaults(func=HardcopyCommand().execute)

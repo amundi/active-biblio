@@ -51,7 +51,7 @@ installed at each physical bookshelf.
 
 - Includes ISBN scanner, used when:
     - Registering a new book    
-    - Renting a book from the bookshelf    
+    - Borrowing a book from the bookshelf    
     - Returning a book to the bookshelf    
 
 - Includes login form    
@@ -67,7 +67,7 @@ Features:
 
 - Books/Samples management   
 - Books search  
-- Reserve/Rent a book  
+- Reserve/Borrow a book  
 - Comments/likes/rates  
 - Favorite list  
 

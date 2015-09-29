@@ -197,15 +197,15 @@ angular.module('starter.controllers', [])
             });
         };
 
-        $scope.rent = function () {
+        $scope.borrow = function () {
             var confirmPopup = $ionicPopup.confirm({
-                title: 'Confirm rental',
-                template: 'Are you sure you want to rent this book?'
+                title: 'Confirm borrow',
+                template: 'Are you sure you want to borrow this book?'
             });
 
             confirmPopup.then(function (res) {
                 if (res) {
-                    //Search + Rent
+                    //Search + Borrow
                     $http({
                         url: $rootScope.url + '/books',
                         method: 'GET',
@@ -228,7 +228,7 @@ angular.module('starter.controllers', [])
                                 };
 
                                 $http({
-                                    url: $rootScope.url + "/books/" + book[0].id + "/rentals",
+                                    url: $rootScope.url + "/books/" + book[0].id + "/borrows",
                                     method: 'POST',
                                     data: data
                                 })
@@ -286,7 +286,7 @@ angular.module('starter.controllers', [])
                                 };
 
                                 $http({
-                                    url: $rootScope.url + "/books/" + book[0].id + "/rentals",
+                                    url: $rootScope.url + "/books/" + book[0].id + "/borrows",
                                     method: 'PUT',
                                     data: data
                                 })

@@ -114,7 +114,7 @@ formal project, however, you may need to consider every one.
 - Is the definition of success included? Of failure?   
 
 	The application is designed to handle books, reservation and 
-	rental. We also integrate social features like comments, likes.
+	borrow. We also integrate social features like comments, likes.
 	If user can use all features, it's a success.
 
 ### Requirements Quality

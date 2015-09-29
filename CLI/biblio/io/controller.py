@@ -10,12 +10,12 @@ def auth():
     return "admin@admin.com", "youshallnotpass"
 
 
-def get_current_rentals():
-    return get("users/rentals")
+def get_current_borrows():
+    return get("users/borrows")
 
 
-def get_history_rentals():
-    return get("users/history/rentals")
+def get_history_borrows():
+    return get("users/history/borrows")
 
 
 def get_added_hardcopies():
@@ -138,12 +138,12 @@ def cancel_book_reservation(book_id):
     return delete("books/{0}/reservations/".format(book_id))
 
 
-def rent_book(book_id, location):
-    return post("books/{0}/rentals".format(book_id), data={'location': location})
+def borrow_book(book_id, location):
+    return post("books/{0}/borrows".format(book_id), data={'location': location})
 
 
 def return_book(book_id, location):
-    return put("books/{0}/rentals/".format(book_id), data={'location': location})
+    return put("books/{0}/borrows/".format(book_id), data={'location': location})
 
 
 def update_book(args, book_details):

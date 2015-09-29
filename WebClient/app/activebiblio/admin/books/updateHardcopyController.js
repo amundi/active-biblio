@@ -36,7 +36,7 @@ app.controller('updateHardcopyController', ['$scope', '$http', '$rootScope', '$s
                         owner: $scope.result.Account.email
                     };
 
-                    $scope.states = ['Available', 'Reserved', 'Rented', 'Unavailable'];
+                    $scope.states = ['Available', 'Reserved', 'Borrowed', 'Unavailable'];
                     $scope.states.updated = $scope.result.state;
                 })
                 .error(function () {

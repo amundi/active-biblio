@@ -33,19 +33,19 @@ app.controller('reservationsController', ['$scope', '$http', '$rootScope', '$sta
                 });
         };
 
-        $scope.rent = function (reservation) {
+        $scope.borrow = function (reservation) {
             var data = {
                 book_id: reservation.Book.id,
                 location_id: reservation.Location.id
             };
 
             $http({
-                url: $rootScope.url + "/books/" + reservation.Book.id + "/rentals",
+                url: $rootScope.url + "/books/" + reservation.Book.id + "/borrows",
                 method: 'POST',
                 data: data
             })
                 .success(function () {
-                    alert("Book rented");
+                    alert("Book borrowed");
                     $scope.initView();
                 })
                 .error(function (message) {

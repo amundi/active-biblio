@@ -55,7 +55,7 @@ Views:
 - Search
 - Specific book
 - Favorite list
-- Rentals
+- Borrows
 - Reservations
 - Added hardcopies
 
@@ -80,13 +80,13 @@ Components:
 - Button to reserve
 - Comment panel to see and leave comments (admin can delete a comment)
 
-### Reservation/Rental
+### Reservation/Borrow
 
-In these views, we can see reservations/rentals and manage them (reserve/cancel and/or rent/return).  
+In these views, we can see reservations/borrows and manage them (reserve/cancel and/or rent/return).  
 
 Components in all these views:
 
 - Star to add this book to favorite list
 - Like icon
 - Book information and link to the book details
-- Buttons to manage reservations/rentals
+- Buttons to manage reservations/borrows

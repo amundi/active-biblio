@@ -15,7 +15,7 @@ HARDCOPIES_DETAILS = [
     "pages",
     "published_date",
     "publisher",
-    "rental_days_limit",
+    "borrow_days_limit",
     "state",
     "title"
 ]

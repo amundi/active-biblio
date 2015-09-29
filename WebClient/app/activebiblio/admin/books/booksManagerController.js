@@ -8,7 +8,7 @@ app.controller('booksManagerController', ['$scope', '$http', '$rootScope', '$sta
 
         $scope.init = function () {
             $scope.type = "books";
-            $scope.states = ['Available', 'Reserved', 'Rented', 'Unavailable'];
+            $scope.states = ['Available', 'Reserved', 'Borrowed', 'Unavailable'];
 
             $http({
                 url: $rootScope.url + '/locations',

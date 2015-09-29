@@ -36,7 +36,7 @@ function update(req, res) {
         isbn13: req.body.isbn13,
         published_date: req.body.published_date,
         pages: req.body.pages,
-        rental_days_limit: req.body.rental_days_limit
+        borrow_days_limit: req.body.borrow_days_limit
     };
 
     var textual_parameters = {
@@ -174,7 +174,7 @@ function search(req, res) {
             isbn13: req.query.isbn13,
             published_date: req.query.published_date,
             pages: req.query.pages,
-            rental_days_limit: req.query.rental_days_limit
+            borrow_days_limit: req.query.borrow_days_limit
         };
 
         var textual_parameters_book = {
@@ -204,7 +204,7 @@ function create(req, res) {
         isbn13: req.body.isbn13,
         published_date: req.body.published_date,
         pages: req.body.pages,
-        rental_days_limit: config.rental_delay,
+        borrow_days_limit: config.borrow_delay,
         title: req.body.title,
         language: req.body.language
     };
@@ -228,7 +228,7 @@ function create(req, res) {
             isbn13: parameters['isbn13'],
             published_date: parameters['published_date'],
             pages: parameters['pages'],
-            rental_days_limit: parameters['rental_days_limit']
+            borrow_days_limit: parameters['borrow_days_limit']
         };
 
         if (parameters['isbn10'].length != 10) {

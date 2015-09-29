@@ -26,10 +26,10 @@ var app = angular.module('ActiveBiblio', [
                     controller: 'favoritesController'
                 })
 
-                .state('user.rentals', {
-                    url: '/rentals',
-                    templateUrl: 'app/activebiblio/user/rentals/rentalsView.html',
-                    controller: 'rentalsController'
+                .state('user.borrows', {
+                    url: '/borrows',
+                    templateUrl: 'app/activebiblio/user/borrows/borrowsView.html',
+                    controller: 'borrowsController'
                 })
 
                 .state('user.reservations', {
@@ -131,6 +131,7 @@ var app = angular.module('ActiveBiblio', [
     ;
 
 app.run(function ($rootScope, $state, $window, config) {
+    console.log(config.URL);
     $rootScope.url = config.URL;
     $window.sessionStorage.type;
     $window.sessionStorage.token != null;

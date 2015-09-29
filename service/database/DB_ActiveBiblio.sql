@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS Book (
 	description text(4096) DEFAULT NULL,
 	pages int NOT NULL,
 	photo text(2048) DEFAULT NULL,
-	rental_days_limit int NOT NULL,
+	borrow_days_limit int NOT NULL,
 
 	PRIMARY KEY (id),
 	UNIQUE (isbn10),
@@ -83,12 +83,12 @@ CREATE TABLE IF NOT EXISTS Hardcopy (
 	FOREIGN KEY (location_id) REFERENCES Location(id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE IF NOT EXISTS Rental (
+CREATE TABLE IF NOT EXISTS Borrow (
 	id int unsigned NOT NULL AUTO_INCREMENT,
 	account_id int unsigned NOT NULL,
 	hardcopy_id int unsigned,
 	book_id int unsigned NOT NULL,
-	rental_date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	borrow_date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	return_date timestamp DEFAULT NULL,
 
 	PRIMARY KEY (id),
@@ -114,7 +114,7 @@ CREATE TABLE IF NOT EXISTS Reservation (
 	FOREIGN KEY (reservation_hardcopy_location_id) REFERENCES Location(id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
-CREATE TABLE IF NOT EXISTS Rate(
+CREATE TABLE IF NOT EXISTS Rate (
 	id int(10) unsigned NOT NULL AUTO_INCREMENT,
 	account_id int unsigned NOT NULL,
 	book_id int unsigned NOT NULL,
@@ -126,7 +126,7 @@ CREATE TABLE IF NOT EXISTS Rate(
 	UNIQUE (account_id,book_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
-CREATE TABLE IF NOT EXISTS Vote(
+CREATE TABLE IF NOT EXISTS Vote (
 	id int unsigned NOT NULL AUTO_INCREMENT,
 	account_id int unsigned NOT NULL,
 	book_id int unsigned NOT NULL,
@@ -140,7 +140,7 @@ CREATE TABLE IF NOT EXISTS Vote(
     UNIQUE (account_id, book_id, votetype_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
-CREATE TABLE IF NOT EXISTS Comment(
+CREATE TABLE IF NOT EXISTS Comment (
 	id int unsigned NOT NULL AUTO_INCREMENT,
 	account_id int unsigned NOT NULL,
 	book_id int unsigned NOT NULL,
@@ -152,7 +152,7 @@ CREATE TABLE IF NOT EXISTS Comment(
 	FOREIGN KEY (book_id) REFERENCES Book (id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
-CREATE TABLE IF NOT EXISTS Reputation(
+CREATE TABLE IF NOT EXISTS Reputation (
 	id int unsigned NOT NULL AUTO_INCREMENT,
 	account_id int unsigned NOT NULL,
 	score int(10) unsigned,
@@ -173,7 +173,7 @@ INSERT INTO Location (id, building, floor, room) VALUES
 (3, 'Building', 16, 'J91');
 
 INSERT INTO Book (id, isbn10, isbn13, title, publisher, published_date, language,
-description, pages, photo, rental_days_limit) VALUES
+description, pages, photo, borrow_days_limit) VALUES
 (1, '0201633612', '9780201633610', 'Design Patterns', 'Addison-Wesley', 1995, 'en', 'Capturing a wealth of experience about the design of object-oriented software, \nfour top-notch designers present a catalog of simple and succinct solutions to commonly occurring \ndesign problems. Previously undocumented, these 23 patterns allow designers to create more flexible, \nelegant, and ultimately reusable designs without having to rediscover the design solutions themselves. \nThe authors begin by describing what patterns are and how they can help you design object-oriented \nsoftware. They then go on to systematically name, explain, evaluate, and catalog recurring designs in \nobject-oriented systems. With Design Patterns as your guide, you will learn how these important patterns \nfit into the software development process, and how you can leverage them to solve your own design problems\n most efficiently. Each pattern describes the circumstances in which it is applicable, when it can be \n applied in view of other design constraints, and the consequences and trade-offs of using the pattern \n within a larger design. All patterns are compiled from real systems and are based on real-world examples.\n Each pattern also includes code that demonstrates how it may be implemented in object-oriented \n programming languages like C++ or Smalltalk. 0201633612B07092001', 395, 'http://images.pearsoned-ema.com/jpeg/large/9780201633610.jpg', 7),
 (2, '1593271441', '9781593271442', 'Hacking: The Art of Exploitation', 'No Starch Press; 2nd edition', 2008, 'English', 'Hacking is the art of creative problem solving, whether that means finding an unconventional solution to a difficult problem or exploiting holes in sloppy programming. Many people call themselves hackers, but few have the strong technical foundation needed to really push the envelope.\r\n\r\nRather than merely showing how to run existing exploits, author Jon Erickson explains how arcane hacking techniques actually work. To share the art and science of hacking in a way that is accessible to everyone, Hacking: The Art of Exploitation, 2nd Edition introduces the fundamentals of C programming from a hacker’s perspective.\r\n\r\nThe included LiveCD provides a complete Linux programming and debugging environment-all without modifying your current operating system. Use it to follow along with the book’s examples as you fill gaps in your knowledge and explore hacking techniques on your own. Get your hands dirty debugging code, overflowing buffers, hijacking network communications, bypassing protections, exploiting cryptographic weaknesses, and perhaps even inventing new exploits.', 488, 'http://ecx.images-amazon.com/images/I/61XTb78EclL._SX377_BO1,204,203,200_.jpg', 7),
 (3, '0132350882', '9780132350884', 'Clean Code: A Handbook of Agile Software Craftsmanship', 'Prentice Hall; 1 edition', 2008, 'English', 'Even bad code can function. But if code isn’t clean, it can bring a development organization to its knees. Every year, countless hours and significant resources are lost because of poorly written code. But it doesn’t have to be that way.\r\n\r\nNoted software expert Robert C. Martin presents a revolutionary paradigm with Clean Code: A Handbook of Agile Software Craftsmanship . Martin has teamed up with his colleagues from Object Mentor to distill their best agile practice of cleaning code “on the fly” into a book that will instill within you the values of a software craftsman and make you a better programmer—but only if you work at it.\r\n\r\nWhat kind of work will you be doing? You’ll be reading code—lots of code. And you will be challenged to think about what’s right about that code, and what’s wrong with it. More importantly, you will be challenged to reassess your professional values and your commitment to your craft.', 464, 'http://ecx.images-amazon.com/images/I/51oXyW8WQwL._SX387_BO1,204,203,200_.jpg', 7),

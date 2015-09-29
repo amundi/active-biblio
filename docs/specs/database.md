@@ -12,9 +12,9 @@ Tables
     - We can upgrade an account   
     - 2 types: Admin or User
     
-- Rental: Link between Account and Hardcopy
-    - In config file, we can choose between unlimited or limited rental delay.return_date can thus be NULL.
-    - When rental is finished, hardcopy_id will be NULL
+- Borrow: Link between Account and Hardcopy
+    - In config file, we can choose between unlimited or limited borrow delay.return_date can thus be NULL.
+    - When borrow is finished, hardcopy_id will be NULL
 
 - Reservation: Link between Account and Book
     - Waiting list with "Order"
@@ -23,11 +23,11 @@ Tables
 
 - Hardcopy: 
     - "Location" -> To know where this sample is (deposit)
-    - "State" -> "Available", "Booked", "Rent", ...
+    - "State" -> "Available", "Booked", "Borrow", ...
     - Register who bring this hardcopy to allow him to get it back
     
 - Book: General description
-    - "Rental_days_limit" -> We can configure Rental_days_limit by books (if it's not unlimited)
+    - "borrow_days_limit" -> We can configure borrow_days_limit by books (if it's not unlimited)
     
 - Author/Category:
     - Match with a book

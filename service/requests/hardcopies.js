@@ -14,7 +14,7 @@ var Author = models.Author;
 var Category = models.Category;
 var Location = models.Location;
 var Account = models.Account;
-var Rental = models.Rental;
+var Borrow = models.Borrow;
 
 // Request to select book with a specific id
 function get_specific_hardcopy(req, res) {
@@ -79,7 +79,7 @@ function create(req, res) {
             parameters['isbn13'] = numeric_parameters['isbn13'];
             parameters['published_date'] = numeric_parameters['published_date'];
             parameters['pages'] = numeric_parameters['pages'];
-            parameters['rental_days_limit'] = config.rental_delay;
+            parameters['borrow_days_limit'] = config.borrow_delay;
 
             return sequelize.transaction(function (t) {
                 return Book.findAll({
@@ -212,7 +212,7 @@ function search(req, res) {
         isbn13: req.query.isbn13,
         published_date: req.query.published_date,
         pages: req.query.pages,
-        rental_days_limit: req.query.rental_days_limit
+        borrow_days_limit: req.query.borrow_days_limit
     };
 
     var textual_parameters_book = {
@@ -275,7 +275,7 @@ function select_hardcopy_available(res, parameters, callback) {
         include: [
             {
                 model: Book,
-                attributes: ['rental_days_limit']
+                attributes: ['borrow_days_limit']
             }
         ]
     })

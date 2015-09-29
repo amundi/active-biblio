@@ -14,4 +14,4 @@ CLI
 #### Command examples    
     > python3 biblio.py book search -c Creepy -a "Tierry vachequilol"
     > python3 biblio.py book cancel-reservation -R 9
-    > python3 biblio.py account current-rentals
+    > python3 biblio.py account current-borrows

@@ -51,7 +51,7 @@ var Book = sequelize.define('Book', {
     description: Sequelize.TEXT,
     pages: {type: Sequelize.INTEGER, allowNull: false},
     photo: Sequelize.TEXT,
-    rental_days_limit: {type: Sequelize.INTEGER, allowNull: false}
+    borrow_days_limit: {type: Sequelize.INTEGER, allowNull: false}
 }, {timestamps: false, freezeTableName: true});
 
 var Author = sequelize.define('Author', {
@@ -90,20 +90,20 @@ Hardcopy.belongsTo(Account, {foreignKey: 'account_id'});
 Location.hasMany(Hardcopy, {foreignKey: 'location_id'});
 Hardcopy.belongsTo(Location, {foreignKey: 'location_id'});
 
-var Rental = sequelize.define('Rental', {
+var Borrow = sequelize.define('Borrow', {
     id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
-    rental_date: {type: Sequelize.DATE, allowNull: false, defaultValue: Sequelize.NOW},
+    borrow_date: {type: Sequelize.DATE, allowNull: false, defaultValue: Sequelize.NOW},
     return_date: Sequelize.DATE
 }, {timestamps: false, freezeTableName: true});
-Account.hasMany(Rental, {foreignKey: 'account_id'});
-Rental.belongsTo(Account, {foreignKey: 'account_id', constraints: false});
-Hardcopy.hasMany(Rental, {foreignKey: 'hardcopy_id', constraints: false});
-Book.hasMany(Rental, {foreignKey: 'book_id'});
-Rental.belongsTo(Book, {foreignKey: 'book_id', constraints: false});
+Account.hasMany(Borrow, {foreignKey: 'account_id'});
+Borrow.belongsTo(Account, {foreignKey: 'account_id', constraints: false});
+Hardcopy.hasMany(Borrow, {foreignKey: 'hardcopy_id', constraints: false});
+Book.hasMany(Borrow, {foreignKey: 'book_id'});
+Borrow.belongsTo(Book, {foreignKey: 'book_id', constraints: false});
 
 var Reservation = sequelize.define('Reservation', {
     id: {
@@ -177,7 +177,7 @@ exports.Book = Book;
 exports.Author = Author;
 exports.Category = Category;
 exports.Hardcopy = Hardcopy;
-exports.Rental = Rental;
+exports.Borrow = Borrow;
 exports.Reservation = Reservation;
 exports.Rate = Rate;
 exports.Vote = Vote;

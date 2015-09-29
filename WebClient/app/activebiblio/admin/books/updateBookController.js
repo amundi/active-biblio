@@ -23,7 +23,7 @@ app.controller('updateBookController', ['$scope', '$http', '$rootScope', '$state
                         description: $scope.result.description,
                         pages: $scope.result.pages,
                         photo: $scope.result.photo,
-                        rental_days_limit: $scope.result.rental_days_limit,
+                        borrow_days_limit: $scope.result.borrow_days_limit,
                         author: $scope.result.Authors[0].name.split(','),
                         category: $scope.result.Categories[0] ?
                             $scope.result.Categories[0].name.split(',') : null

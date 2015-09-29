@@ -2,7 +2,7 @@ var database = require('../database/connection');
 var response = require('../response');
 var util = require('../util');
 var hardcopies = require('./hardcopies');
-var rentals = require('./rentals');
+var borrows = require('./borrows');
 var _ = require('underscore');
 var models = require('../database/models');
 var config = require('../config');
@@ -13,7 +13,7 @@ var Book = models.Book;
 var Author = models.Author;
 var Location = models.Location;
 var Hardcopy = models.Hardcopy;
-var Rental = models.Rental;
+var Borrow = models.Borrow;
 
 var date_return = new Date();
 date_return.setDate(date_return.getDate() + config.delay_to_return_book);
@@ -72,8 +72,8 @@ function reserve(req, res) {
             if (result_exists) {
                 user_reservation(res, parameters, function (reservation_exists) {
                     if (!reservation_exists) {
-                        rentals.user_rental(res, parameters, function(rent_result) {
-                            if(!rent_result) {
+                        borrows.user_borrow(res, parameters, function(borrow_result) {
+                            if(!borrow_result) {
                                 count_reservation(res, parameters, function (count_result) {
                                     if (count_result != 'error') {
                                         parameters['queue_order'] = count_result + 1;
@@ -90,17 +90,17 @@ function reserve(req, res) {
 
                                                                 // Mailing user + update return date to return the book
                                                                 // if it's unlimited and someone reserves this book
-                                                                if (!config.rental_days_limit) {
-                                                                    return rentals.get_oldest_rental(parameters, t).then(function (rentals) {
-                                                                        if (rentals.length != 0) {
-                                                                            response.mail_return_book(rentals[0].Account.email, rentals[0].Book.title);
+                                                                if (!config.borrow_days_limit) {
+                                                                    return borrows.get_oldest_borrow(parameters, t).then(function (borrows) {
+                                                                        if (borrows.length != 0) {
+                                                                            response.mail_return_book(borrows[0].Account.email, borrows[0].Book.title);
 
-                                                                            return Rental.update({
+                                                                            return Borrow.update({
                                                                                 return_date: date_return
                                                                             }, {
                                                                                 where: {
                                                                                     book_id: parameters['book_id'],
-                                                                                    account_id: rentals[0].Account.id,
+                                                                                    account_id: borrows[0].Account.id,
                                                                                     hardcopy_id: {
                                                                                         $ne: null
                                                                                     }
@@ -332,7 +332,7 @@ function user_hardcopy_reserved(res, parameters, callback) {
         include: [
             {
                 model: Book,
-                attributes: ['rental_days_limit']
+                attributes: ['borrow_days_limit']
             }
         ]
     })

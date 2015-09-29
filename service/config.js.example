@@ -61,11 +61,11 @@ exports.configTest = {
     }
 };
 
-// Rental configuration
+// Borrow configuration
 // Possible values: true if limited, false if unlimited
-exports.rental_days_limit = false;
+exports.borrow_days_limit = false;
 
-exports.rental_delay = 7;
+exports.borrow_delay = 7;
 exports.delay_to_return_book = 7;
 
 // Reservation configuration

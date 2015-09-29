@@ -1,0 +1,53 @@
+<div class="jumbotron">
+    <div class="container">
+        <fieldset>
+            <legend>{{'Current borrows' | translate}}</legend>
+            <table class="table table-responsive" ng-if="currentBorrows">
+                <tr>
+                    <th>{{'Book' | translate}}</th>
+                    <th>{{'Return date' | translate}}</th>
+                    <th>
+                        <label>{{'Location' | translate}}
+                            <select ng-options="location.building + ':' + location.floor + ':' + location.room for location in locations"
+                                    ng-model="locations.selectedLocation">
+                            </select>
+                        </label>
+                    </th>
+                    <th></th>
+                </tr>
+                <tr ng-repeat="currentBorrow in currentBorrows">
+                    <td ng-click="go(currentBorrow.Book.id)">{{ currentBorrow.Book.title }} - {{
+                        currentBorrow.Book.Authors[0].name }}
+                    </td>
+                    <td>{{ currentBorrow.return_date | date: 'dd/MM/yyyy - HH:mm' }}</td>
+                    <td>
+                        <button class="btn btn-success" ng-click="return(currentBorrow)">
+                            {{'Return' | translate}}
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+        <fieldset>
+            <legend>{{'Borrows history' | translate}}</legend>
+            <table class="table table-responsive" ng-if="borrowsHistory">
+                <tr>
+                    <th>{{'Book' | translate}}</th>
+                    <th>{{'Borrow date' | translate}}</th>
+                    <th></th>
+                </tr>
+                <tr ng-repeat="borrowHistory in borrowsHistory">
+                    <td ng-click="go(borrowHistory.Book.id)">{{ borrowHistory.Book.title }} - {{
+                        borrowHistory.Book.Authors[0].name }}
+                    </td>
+                    <td>{{ borrowHistory.borrow_date | date: 'dd/MM/yyyy - HH:mm' }}</td>
+                    <td>
+                        <button class="btn btn-success" ng-click="addReservation(borrowHistory.Book.id)">
+                            {{'Reserve' | translate}}
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+    </div>
+</div>

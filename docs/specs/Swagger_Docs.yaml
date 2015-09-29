@@ -428,9 +428,9 @@ paths:
             description: Unexpected error
             schema:
               $ref: '#/definitions/Error'
-  /books/:id/rentals:
+  /books/:id/borrows:
       post:
-        summary: Rent the book
+        summary: Borrow the book
         description: |
           None
         parameters:
@@ -444,13 +444,13 @@ paths:
             description: Success or fail
             code:
               type: number
-            rental_id:
+            borrow_id:
               type: number
           default:
             description: Unexpected error
             schema:
               $ref: '#/definitions/Error'
-  /books/:id/rentals/:rental_id/return:
+  /books/:id/borrows/:borrow_id/return:
       put:
         summary: Return the book
         description: |
@@ -461,9 +461,9 @@ paths:
             description: Book ID
             required: true
             type: number
-          - name: rental_id
+          - name: borrow_id
             in: query
-            description: Rental ID
+            description: Borrow ID
             required: true
             type: number
         responses:
@@ -580,7 +580,7 @@ definitions:
           $ref: '#/definitions/Vote'
       pages:
         type: number
-      rental_days_limit:
+      borrow_days_limit:
         type: number
         
   Book_From_Harcopy:

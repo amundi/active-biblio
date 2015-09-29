@@ -59,7 +59,8 @@
             </tr>
         </table>
         <div class="comment_specific_book">
-            <input type="text" ng-model="comment_box" placeholder="{{'Comment' | translate}}">
+            <textarea ng-model="comment_box" placeholder="{{'Comment' | translate}}" style='width:750px;height:100px'></textarea>
+            <br>
             <button type="submit" class="btn btn-primary" ng-click="addComment()">{{'Add comment' | translate}}</button>
         </div>
     </div>

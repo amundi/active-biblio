@@ -14,7 +14,7 @@ BOOK_DETAILS = [
     "published_date",
     "publisher",
     "photo",
-    "rental_days_limit",
+    "borrow_days_limit",
     "title",
 ]
 
@@ -37,7 +37,7 @@ class BookCommand(BaseCommand):
             "is-rated": self.is_rated,
             "reserve": self.reserve,
             "cancel-reservation": self.cancel_reservation,
-            "rent": self.rent,
+            "borrow": self.borrow,
             "return": self.return_book,
             "available-hardcopies": self.get_available_hardcopies,
             "get-comments": self.get_comments,
@@ -117,9 +117,9 @@ class BookCommand(BaseCommand):
         self.require_book_id(args)
         controller.cancel_book_reservation(args['book_id'])
 
-    def rent(self, args):
+    def borrow(self, args):
         self.require(args['book_id'], args['location'], help='--entity-id ID -l location')
-        controller.rent_book(args['book_id'], args['location'])
+        controller.borrow_book(args['book_id'], args['location'])
 
     def return_book(self, args):
         self.require(args['book_id'], args['location'],

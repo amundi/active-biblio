@@ -28,7 +28,7 @@ Read-only functions can be made anonymously.
     - Is a book rated ?                         -->    cli book is-rated --id ID    
     - Reserve the book                          -->    cli book reserve --id ID    
     - Cancel the reservation                    -->    cli book cancel-reservation --id ID -R Reservation    
-    - Rent the book                             -->    cli book rent --id ID    
+    - Borrow the book                             -->    cli book rent --id ID    
     - Return the book                           -->    cli book return-book --id ID -R Reservation
     - Get hardcopies                            -->    cli book get-hardcopies --id ID    
     - Get comments                              -->    cli book get-comments --id ID    
@@ -42,8 +42,8 @@ Read-only functions can be made anonymously.
 
 ### Accounts
 
-    - Return current rentals                    -->    cli account rentals --id 0000000001    
-    - Return finished rentals                   -->    cli account history --id 0000000001    
+    - Return current borrows                    -->    cli account borrows --id 0000000001    
+    - Return finished borrows                   -->    cli account history --id 0000000001    
     - Return books added by user                -->    cli account user-books --id 0000000001    
     - Return reservations                       -->    cli account reservations --id 0000000001    
     - Return favorites                          -->    cli account favorites --id 0000000001    

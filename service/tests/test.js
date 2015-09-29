@@ -759,8 +759,8 @@ if(process.env.is_test) {
         });
     });
 
-// TEST reservation/rental queue
-    describe("TEST Reservation/Rental queue", function () {
+// TEST reservation/borrow queue
+    describe("TEST Reservation/Borrow queue", function () {
         describe("Connect accounts and create hardcopies", function () {
             it("connect user #2", function (done) {
                 request(url)
@@ -904,27 +904,27 @@ if(process.env.is_test) {
             });
         });
 
-        describe("Rent #1", function () {
+        describe("Borrow #1", function () {
             it("should fail (hardcopies unavailable)", function (done) {
-                rent(1, response.HTTP_SERV_GENERIC_ERROR, done);
+                borrow(1, response.HTTP_SERV_GENERIC_ERROR, done);
             });
         });
 
-        describe("Rent #0 #2", function () {
+        describe("Borrow #0 #2", function () {
             it("should success #0", function (done) {
-                rent(0, response.HTTP_OK, done);
+                borrow(0, response.HTTP_OK, done);
             });
             it("should success #2", function (done) {
-                rent(2, response.HTTP_OK, done);
+                borrow(2, response.HTTP_OK, done);
             });
         });
 
         describe("Return #0 #2", function () {
             it("should success #0", function (done) {
-                return_rental(0, done);
+                return_borrow(0, done);
             });
             it("should success #2", function (done) {
-                return_rental(2, done);
+                return_borrow(2, done);
             });
             it("queue_order #4 = 0", function (done) {
                 get_reservations(4, 0, done);
@@ -934,10 +934,10 @@ if(process.env.is_test) {
             });
         });
 
-        describe("get_account_rentals", function () {
+        describe("get_account_borrows", function () {
             it("should not return empty body", function (done) {
                 request(url)
-                    .get('/users/rentals')
+                    .get('/users/borrows')
                     .set('Authorization', users[1].token)
                     .expect(200)
                     .end(function (err, res) {
@@ -950,10 +950,10 @@ if(process.env.is_test) {
             });
         });
 
-        describe("Rent/Return #1", function () {
-            it("rent should fail (bad location)", function (done) {
+        describe("Borrow/Return #1", function () {
+            it("borrow should fail (bad location)", function (done) {
                 request(url)
-                    .post("/books/" + book_id_inserted + "/rentals")
+                    .post("/books/" + book_id_inserted + "/borrows")
                     .set('Authorization', users[1].token)
                     .send({book_id: book_id_inserted, location_id: 2})
                     .expect(response.HTTP_SERV_GENERIC_ERROR)
@@ -964,18 +964,18 @@ if(process.env.is_test) {
                         done()
                     });
             });
-            it("rent should success", function (done) {
-                rent(1, response.HTTP_OK, done);
+            it("borrow should success", function (done) {
+                borrow(1, response.HTTP_OK, done);
             });
             it("return should success", function (done) {
-                return_rental(1, done);
+                return_borrow(1, done);
             });
         });
 
-        describe("get_account_history_rentals", function () {
+        describe("get_account_history_borrows", function () {
             it("should not return empty body", function (done) {
                 request(url)
-                    .get("/users/history/rentals")
+                    .get("/users/history/borrows")
                     .set('Authorization', users[1].token)
                     .expect(response.HTTP_OK)
                     .end(function (err, res) {
@@ -1030,9 +1030,9 @@ if(process.env.is_test) {
             });
     }
 
-    function rent(user_id, code, done) {
+    function borrow(user_id, code, done) {
         request(url)
-            .post("/books/" + book_id_inserted + "/rentals")
+            .post("/books/" + book_id_inserted + "/borrows")
             .set('Authorization', users[user_id].token)
             .send({book_id: book_id_inserted, location_id: 1})
             .expect(code)
@@ -1044,9 +1044,9 @@ if(process.env.is_test) {
             });
     }
 
-    function return_rental(user_id, done) {
+    function return_borrow(user_id, done) {
         return request(url)
-            .put("/books/" + book_id_inserted + "/rentals")
+            .put("/books/" + book_id_inserted + "/borrows")
             .set('Authorization', users[user_id].token)
             .send({location_id: 1})
             .expect(response.HTTP_OK)

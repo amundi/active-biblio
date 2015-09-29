@@ -1,7 +1,7 @@
 ActiveBiblio terminal
 =====================
 
-The device next to the bookshelf to add, rent or return a book.
+The device next to the bookshelf to add, borrow or return a book.
 
 
 Requirements
