@@ -22,7 +22,7 @@ exports.config = {
     connect : {
         host: 'localhost',
         dialect: 'sqlite',
-        storage: 'local/sqlite.db',
+        storage: 'local/biblio.db',
 
         pool: {
             max: 5,
