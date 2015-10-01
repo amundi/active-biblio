@@ -3,7 +3,7 @@ exports.auth = {
     method: 'webservice',
     params: {
       wsdl_file: 'local/company-auth.wsdl',
-      extra_args: ['domain', 'department', ...]
+      extra_args: ['domain', 'department', '...']
     }
 };
 
@@ -22,7 +22,7 @@ exports.config = {
     connect : {
         host: 'localhost',
         dialect: 'sqlite',
-        storage: 'local/sqlite.db',
+        storage: 'local/biblio.db',
 
         pool: {
             max: 5,
@@ -32,8 +32,8 @@ exports.config = {
     }
 };
 
-// Admin accounts
-exports.admin_file = "";
+// Admin accounts: one username per line
+exports.admin_file = "local/admins.txt";
 
 // Mailing system
 exports.mailing = {

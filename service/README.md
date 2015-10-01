@@ -130,6 +130,25 @@ For unit testing:
 
 ![Running mocha](docs/specs/images/running_mocha.png)
 
+- To re-run tests: Alt + Shift + R
+
 - On the command line:
-	- Inside the project directory, set is_test=true and run: `mocha tests`   
-	- Restart command line after 
+	- Inside the project directory, run: `mocha tests`
+
+### Debugging
+
+1. Make sure the tests are running
+  - Good to do sanity test before you start working
+  - Re-run the tests before creating Merge Requests
+
+2. An easy way to do sanity checks with `curl`, for example: `curl localhost:8080/books`
+  - A non-empty `http_proxy` variable may cause problems. In that case: `http_proxy= curl localhost:8080/books`
+
+More examples:
+
+    curl localhost:8080/login -X POST -d mail=admin -d password=admin
+    # should pass if the password file has a line: admin:admin
+
+The [SQLite command line client][1] can be an indispensable tool for debugging.
+
+[1]: https://www.sqlite.org/download.html

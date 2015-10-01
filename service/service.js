@@ -1,4 +1,5 @@
 var express = require('express');
+var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var cors = require('cors');
 var requests_accounts = require('./requests/accounts');
@@ -16,6 +17,7 @@ var response = require('./response');
 var config = require('./config');
 
 var app = express();
+app.use(morgan('combined'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(cors({origin: config.access_control}));
@@ -270,7 +272,7 @@ app.delete('/location/:id', function (req, res) {
     }
 });
 
-app.listen(8090);
+app.listen(8080);
 console.log("Server's listenning");
 
 exports.app = app;
