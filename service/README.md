@@ -19,6 +19,20 @@ Requirements
 
 - Node.js + libraries
 
+Configuration
+-------------
+
+Copy `config.js.example` to `config.js` and customize.
+
+Create a file `local/passwords.txt` with content:
+
+    admin:admin
+    
+Create a file `local/admins.txt` with content:
+
+    admin
+    
+For more configuration options see the project Wiki.
 
 Install in Windows
 ------------------
