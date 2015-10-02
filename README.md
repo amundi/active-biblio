@@ -1,10 +1,21 @@
 Active Biblio
 =============
-![Active Biblio](activebiblio.JPG?raw=true)
 
-Active Biblio aims to enhance book sharing amongst Amundi and partners employees.    
-The goal here is to offer a new way of borrowing books interactively, sharing opinions and informations    
+Active Biblio is a simple system to manage a small collection of books:
 
-The project will mostly consist in a Web interface where each user will be able to borrow, share, and comment books.   
-A server and a database will display every book available and offer a new way of borrowing books, check if there are still some hardcopies left, and what users think about it.    
-A CLI will be provided for the most adventurous who prefer to choose a book without being discouraged by its cover !
+- Tracking: who has a book, since when, reserved until when
+- Waiting lists: reserve a book to be the next to borrow it
+- Easy way to borrow books
+- Easy way to register new books
+- Search and browse the collection
+- Social features: like, recommend, share a book
+
+The main building blocks:
+
+- [Backend service](service), built with Node.js
+- [Web interface](WebClient), built with AngularJS: search, browse, track, social
+- [Terminal app](terminal), built with Ionic: badge scanner, barcode scanner
+- [Command line interface](CLI), built with Python
+
+For more details, see the specs in [docs/specs/subsystems.md](docs/specs/subsystems.md)
+
