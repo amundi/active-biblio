@@ -7,8 +7,16 @@ The backend of the library, exposing access to clients through a REST API.
 Requirements
 ------------
 
-- Apache web server
-- MySQL database
+- <strike>Apache web server</strike> ; not really needed for development.
+  It's only used to serve files of the web client,
+  which can be done from WebStorm.
+  - TODO: rework this README
+
+- <strike>MySQL database</strike> ; not really needed for development.
+  The example configuration using SQLite3 should be ready to use.
+  - TODO: rework this README
+  - TODO: how to import sample data
+
 - Node.js + libraries
 
 
