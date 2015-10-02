@@ -1,6 +1,11 @@
 ActiveBiblio webclient
 =====================
 
+TODO: WAMP is not really needed for development.
+It's only used to serve files of the web client,
+which can be done from WebStorm.
+Should rework this README.
+
 Windows
 --------
 
